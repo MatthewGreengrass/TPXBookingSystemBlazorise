@@ -1,0 +1,150 @@
+/* _content/TPX.BookingSystem/Pages/BookingPage.razor.rz.scp.css */
+.transition-visible[b-kl7kil5x9k] {
+    overflow: hidden;
+    transition: transform 0.3s ease-out;
+    height: auto;
+    transform: scaleY(1);
+    transform-origin: top;
+}
+
+    .transition-visible.transition-collapsed[b-kl7kil5x9k] {
+        transform: scaleY(0);
+    }
+/* _content/TPX.BookingSystem/Shared/MainLayout.razor.rz.scp.css */
+using System.Threading.Tasks;
+using Blazorise.Localization;
+using Microsoft.AspNetCore.Components;
+
+namespace Blazorise.Demo.Layouts[b-69itekeh6w] {
+    public partial class MainLayout
+
+{
+    string layoutType = "fixed-header";
+    protected override async Task OnInitializedAsync()
+
+{
+    await SelectCulture( "en-US" );
+    await base.OnInitializedAsync();
+}
+
+private Task SelectCulture( string name )[b-69itekeh6w] {
+    LocalizationService .ChangeLanguage( name );
+    return Task.CompletedTask;
+}
+
+Task OnThemeEnabledChanged( bool value )[b-69itekeh6w] {
+    if ( Theme == null ) return Task.CompletedTask;
+    Theme .Enabled = value;
+    Theme .ThemeHasChanged();
+    return Task.CompletedTask;
+}
+
+Task OnThemeGradientChanged( bool value )[b-69itekeh6w] {
+    if ( Theme == null ) return Task.CompletedTask;
+    Theme .IsGradient = value;
+    //if ( Theme.GradientOptions == null ) // Theme.GradientOptions = new GradientOptions();
+    //Theme.GradientOptions.BlendPercentage = 80;
+    Theme .ThemeHasChanged();
+    return Task.CompletedTask;
+}
+
+Task OnThemeRoundedChanged( bool value )[b-69itekeh6w] {
+    if ( Theme == null ) return Task.CompletedTask;
+    Theme .IsRounded = value;
+    Theme .ThemeHasChanged();
+    return Task.CompletedTask;
+}
+
+Task OnThemeColorChanged( string value )[b-69itekeh6w] {
+    if ( Theme == null ) return Task.CompletedTask;
+    Theme .ColorOptions ??= new();
+    Theme .BackgroundOptions ??= new();
+    Theme .TextColorOptions ??= new();
+    Theme .ColorOptions.Primary = value;
+    Theme .BackgroundOptions.Primary = value;
+    Theme .TextColorOptions.Primary = value;
+    Theme .InputOptions ??= new();
+    //Theme.InputOptions.Color = value;
+    Theme .InputOptions.CheckColor = value;
+    Theme .InputOptions.SliderColor = value;
+    Theme .SpinKitOptions ??= new();
+    Theme .SpinKitOptions.Color = value;
+    Theme .ThemeHasChanged();
+    return Task.CompletedTask;
+}
+
+[Inject] protected ITextLocalizerService LocalizationService[b-69itekeh6w] {
+    get;
+    set;
+}
+
+[CascadingParameter] protected Theme Theme[b-69itekeh6w] {
+    get;
+    set;
+}
+
+}
+}
+/* _content/TPX.BookingSystem/Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-2lwg7z1wq8] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-2lwg7z1wq8] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-2lwg7z1wq8] {
+    font-size: 1.1rem;
+}
+
+.oi[b-2lwg7z1wq8] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-2lwg7z1wq8] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-2lwg7z1wq8] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-2lwg7z1wq8] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-2lwg7z1wq8]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-2lwg7z1wq8]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-2lwg7z1wq8]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-2lwg7z1wq8] {
+        display: none;
+    }
+
+    .collapse[b-2lwg7z1wq8] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}

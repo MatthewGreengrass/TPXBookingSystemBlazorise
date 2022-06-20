@@ -1,0 +1,394 @@
+﻿@page "/booking page"
+
+@using TPX.BookingSystem.Data
+@using TPX.BookingSystem.Models
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using Microsoft.Extensions.Logging;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Threading.Tasks;
+
+
+@inject TrainBookingService TrainBookingService
+@inject HotelBookingService HotelBookingService
+@inject FlightBookingService FlightBookingService
+@inject CentralBookingService CentralBookingService
+
+@code {
+    private List<TrainBooking> TrainBookings;
+    private List<Station> Stations;
+
+    private List<HotelBooking> HotelBookings;
+    private List<Hotel> Hotels;
+
+    private List<FlightBooking> FlightBookings;
+    private List<Flight> Flights;
+
+    private List<CentralBooking> CentralBookings;
+
+    private TrainBooking myTrainBooking = new();
+
+    private HotelBooking myHotelBooking = new();
+
+    private FlightBooking myFlightBooking = new();
+
+    private CentralBooking myCentralBooking = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        TrainBookings = await TrainBookingService.GetTrainBookings();
+        Stations = await TrainBookingService.GetStationList();
+
+        HotelBookings = await HotelBookingService.GetHotelBookings();
+        Hotels = await HotelBookingService.GetHotelList();
+
+        FlightBookings = await FlightBookingService.GetFlightBookings();
+        Flights = await FlightBookingService.GetFlightList();
+
+        CentralBookings = await CentralBookingService.GetCentralBookings();
+    }
+
+    private void HandleValidSubmit()
+    {
+        CentralBookingService.AddCentralBooking(myCentralBooking);
+        
+        TrainBookingService.AddTrainBooking(myTrainBooking);
+
+        HotelBookingService.AddHotelBooking(myHotelBooking);
+
+        FlightBookingService.AddFlightBooking(myFlightBooking);
+    }
+}
+
+@*Export form and repeat via blazorise button*@
+
+<link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel=”nofollow” integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
+
+<p>
+    <a class="btn btn-primary" @onclick="ToggleDropdown" data-toggle="collapse" href="#Train" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Train Journey 1
+    </a>
+</p>
+<div class="collapse" id="Train">
+    <div class="panel panel-default border">
+
+    <span>Train Booking Request</span>
+    <hr />
+    <EditForm Model="@myTrainBooking" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+        <div class="form-group">
+            <label for="DepartureStation">Departure Station</label>
+            <InputSelect id="DepartureStation" class="form-control" @bind-Value="myTrainBooking.DepartureStation">
+                @foreach (var item in Stations)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="ArrivalStation">Arrival Station</label>
+            <InputSelect id="ArrivalStation" class="form-control" @bind-Value="myTrainBooking.ArrivalStation">
+                @foreach (var item in Stations)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
+            </InputSelect>
+        </div>
+
+        <div class="form-group">
+            <label for="DepartureDateTime">Date and time of departure</label>
+            <InputDate id="DepartureDateTime" class="form-control" @bind-Value="myTrainBooking.DepartureDateTime" />
+        </div>
+
+        <div class="form-group">
+            <label for="ReturnDateTime">Date and time of return journey</label>
+            <InputDate id="ReturnDateTime" class="form-control" @bind-Value="myTrainBooking.ReturnDateTime" />
+        </div>
+
+        <div class="form-group">
+            <label for="ReturnDateTimeOpen">Open Return Required?</label>
+            <InputCheckbox id="ReturnDateTimeOpen" class="form-control" @bind-Value="myTrainBooking.ReturnDateTimeOpen" />
+        </div>
+
+        @*<button class="btn btn-primary" type="submit">Create Booking</button>*@
+    </EditForm>
+    </div>
+</div>
+
+@*<p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data- 
+target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+   </button>   
+</p>*@
+
+<p>
+    <a class="btn btn-primary" @onclick="ToggleDropdown" data-toggle="collapse" href="#Hotel" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Hotel Stay 1
+    </a>
+</p>
+
+<div class="collapse" id="Hotel">
+    <div class="panel panel-default border">
+
+    <span>Hotel Booking Request</span>
+    <hr />
+    <EditForm Model="@myHotelBooking" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+        <div class="form-group">
+            <label for="HotelLocation">Hotel Location</label>
+            <InputSelect id="HotelLocation" class="form-control" @bind-Value="myHotelBooking.HotelLocation">
+                @foreach (var item in Hotels)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="DepartureDateTime">Date and time of departure</label>
+            <InputDate id="DepartureDateTime" class="form-control" @bind-Value="myHotelBooking.DepartureDateTime" />
+        </div>
+
+        <div class="form-group">
+            <label for="ReturnDateTime">Date and time of return journey</label>
+            <InputDate id="ReturnDateTime" class="form-control" @bind-Value="myHotelBooking.ReturnDateTime" />
+        </div>
+
+        @*<button class="btn btn-primary" type="submit">Create Booking</button>*@
+    </EditForm>
+    </div>
+</div>
+
+@*<p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data- 
+target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+   </button>   
+</p>*@
+
+<p>
+    <a class="btn btn-primary" @onclick="ToggleDropdown" data-toggle="collapse" href="#Flight" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Flight Travel 1
+    </a>
+</p>
+
+<div class="collapse" id="Flight">
+    <div class="panel panel-default border">
+
+    <span>Flight Booking Request</span>
+
+    <hr />
+    <EditForm Model="@myFlightBooking" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+        <div class="form-group">
+            <label for="DepartureAirport">Departure Airport</label>
+            <InputSelect id="DepartureAirport" class="form-control" @bind-Value="myFlightBooking.DepartureAirport">
+                @foreach (var item in Flights)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="ArrivalAirport">Arrival Airport</label>
+            <InputSelect id="ArrivalAirport" class="form-control" @bind-Value="myFlightBooking.ArrivalAirport">
+                @foreach (var item in Flights)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
+            </InputSelect>
+        </div>
+
+        <div class="form-group">
+            <label for="DepartureDateTime">Date and time of departure</label>
+            <InputDate id="DepartureDateTime" class="form-control" @bind-Value="myFlightBooking.DepartureDateTime" />
+        </div>
+
+        <div class="form-group">
+            <label for="ReturnDateTime">Date and time of return journey</label>
+            <InputDate id="ReturnDateTime" class="form-control" @bind-Value="myFlightBooking.ReturnDateTime" />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Create Booking</button>
+    </EditForm>
+    </div>
+</div>
+
+@code { private bool isDropdownVisible = false;
+private string DropdownCssClass => isDropdownVisible ? "show" : "transition-collapsed";
+private void ToggleDropdown()
+{
+    isDropdownVisible = !isDropdownVisible;
+} }
+
+@*<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+</p>*@
+@*<button data-toggle="collapse" data-target="multiCollapseExample1">Collapsible</button>
+<div class="row">
+  <div class="col">
+    <div class="collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse" id="multiCollapseExample2">
+      <div class="card card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+      </div>
+    </div>
+  </div>
+</div>*@
+
+@*<p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data- 
+target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+   </button>   
+</p>
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        Lorem ipsum dolor sit amet
+    </div>
+</div>*@
+
+
+@*<p>
+    <a class="btn btn-primary" @onclick="ToggleDropdown" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Link with href
+    </a>
+</p>
+<div class="transition-visible @DropdownCssClass" id="collapseExample">
+    <div class="card card-body">
+        Anim pariatur cliche...
+    </div>
+</div>
+
+
+@code { private bool isDropdownVisible = false;
+private string DropdownCssClass => isDropdownVisible ? "show" : "transition-collapsed";
+private void ToggleDropdown()
+{
+    isDropdownVisible = !isDropdownVisible;
+} }*@
+
+
+
+
+
+@*@code{
+    [Parameter]
+    public string Collapse{get;set;}="collapse"; // hide by default
+}
+
+@code {
+    private bool Collapsed = true;
+}*@
+
+@*<h1>Your Bookings</h1>
+
+<p>This is a history of your confirmed and pending booking requests</p>*@
+
+@*@if (FlightBookings.Any())
+{
+    <table class="table1">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Departure Airport</th>
+                <th>Arrival Airport</th>
+                <th>Departure Date</th>
+                <th>Return Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in FlightBookings)
+            {
+                <tr>
+                    <td>@booking.FlightBookingID</td>
+                    <td>@booking.DepartureAirport</td>
+                    <td>@booking.ArrivalAirport</td>
+                    <td>@booking.DepartureDateTime</td>
+                    <td>@booking.ReturnDateTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p><em>There are no bookings</em></p>
+}
+
+@if (HotelBookings.Any())
+{
+    <table class="table2">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Hotel Location</th>
+                <th>Departure Date</th>
+                <th>Return Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in HotelBookings)
+            {
+                <tr>
+                    <td>@booking.HotelBookingID</td>
+                    <td>@booking.HotelLocation</td>
+                    <td>@booking.DepartureDateTime</td>
+                    <td>@booking.ReturnDateTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p><em>There are no bookings</em></p>
+}
+
+@if (TrainBookings.Any())
+{
+    <table class="table3">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Departure Station</th>
+                <th>Arrival Station</th>
+                <th>Departure Date</th>
+                <th>Return Date</th>
+                <th>Open Return</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in TrainBookings)
+            {
+                <tr>
+                    <td>@booking.TrainBookingID</td>
+                    <td>@booking.DepartureStation</td>
+                    <td>@booking.ArrivalStation</td>
+                    <td>@booking.DepartureDateTime</td>
+                    <td>@booking.ReturnDateTime</td>
+                    <td>@booking.ReturnDateTimeOpen</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p><em>There are no bookings</em></p>
+}*@
+

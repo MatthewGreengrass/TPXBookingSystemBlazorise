@@ -1,0 +1,104 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TPX.BookingSystem
+build_property.RootNamespace = TPX.BookingSystem
+build_property.ProjectDir = C:\Repositories\TPXBookingSystem\TPX.BookingSystem\TPX.BookingSystem\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Repositories\TPXBookingSystem\TPX.BookingSystem\TPX.BookingSystem
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Pages/Conversation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udmVyc2F0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/DoingWorkComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERvaW5nV29ya0NvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/FooterMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEZvb3Rlck1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/LoginDisplay.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luRGlzcGxheS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/RootLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFJvb3RMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/SideMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFNpZGVNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/ThemeColorSelector.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRoZW1lQ29sb3JTZWxlY3Rvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/TopMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRvcE1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Pages/BookingPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va2luZ1BhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-kl7kil5x9k
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-69itekeh6w
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-2lwg7z1wq8
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Areas/Identity/Pages/Account/LogOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dPdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Repositories/TPXBookingSystem/TPX.BookingSystem/TPX.BookingSystem/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

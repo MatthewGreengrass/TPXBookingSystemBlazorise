@@ -1,0 +1,102 @@
+﻿@*@page "/conversation"
+
+@using TPX.BookingSystem.Data
+@using TPX.BookingSystem.Models
+@using System.Linq
+
+<h3>Conversation</h3>
+
+@inject TrainBookingService TrainBookingService;
+@inject HotelBookingService HotelBookingService;
+@inject FlightBookingService FlightBookingService;
+@inject ConversationService ConversationService;
+@inject CentralBookingService CentralBookingService;
+
+@code {
+
+    private Conversations myConversation = new();
+
+    private TrainBooking myTrainBooking = new();
+
+    private HotelBooking myHotelBooking = new();
+
+    private FlightBooking myFlightBooking = new();
+
+    private CentralBooking myCentralBooking = new();
+
+    
+
+    private List<RequestType> RequestTypes;
+    private List<TrainBooking> TrainBookings;
+    private List<HotelBooking> HotelBookings;
+    private List<FlightBooking> FlightBookings;
+    private List<CentralBooking> CentralBookings;
+
+    protected override async Task OnInitializedAsync()
+        {
+            RequestTypes = await ConversationService.GetRequestType();
+
+            //TrainBookings = await TrainBookingService.GetTrainBookings();
+
+            //HotelBookings = await HotelBookingService.GetHotelBookings();
+
+            //FlightBookings = await FlightBookingService.GetFlightBookings();
+
+            CentralBookings = await CentralBookingService.GetCentralBookings();
+
+            //var AllBookingsListConversation = new List<Conversation> AllBookingsList;
+            //AllBookingsListConversation.AddRange((IEnumerable<TrainBooking>)TrainBookings);
+            //AllBookingsList.AddRange((List<AllBookings>)HotelBookings);
+            //AllBookingsList.AddRange((List<AllBookings>)FlightBookings);
+        }  
+
+    private void HandleValidSubmit()
+    {
+        ConversationService.AddConversation(myConversation);
+        
+        //TrainBookingService.AddTrainBooking(myTrainBooking);
+
+        //HotelBookingService.AddHotelBooking(myHotelBooking);
+
+        //FlightBookingService.AddFlightBooking(myFlightBooking);
+    }
+}
+
+<div class="booking-form">
+
+    <span>Flight Booking Request</span>
+    <hr />
+    <EditForm Model="@myConversation" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group">
+            <label for="RequestType">Request Type</label>
+            <InputSelect id="RequestType" class="form-control" @bind-Value="myConversation.RequestType">
+                @foreach (var item in RequestTypes)
+                {
+                    <option value="@item.Value">@item.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="BookingLink">Booking Link</label>
+            <InputSelect id="Booking" class="form-control" @bind-Value="myConversation.BookingLink">
+                @foreach (var item in CentralBookings)
+                {
+                    <option value="@item.CentralBookingID">@item.CentralBookingID</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="TextEntry"></label>
+            <InputTextArea id="TextEntry" class="form-control" @bind-Value="myConversation.TextEntry" rows="4"/>
+        </div>
+
+        <div class="form-group">
+            <label for="DateTime">Date and Time</label>
+            <InputDate id="DateTime" class="form-control" @bind-Value="myConversation.DateTime" />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Create Booking</button>
+    </EditForm>
+</div>*@
